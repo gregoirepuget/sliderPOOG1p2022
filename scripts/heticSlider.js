@@ -22,6 +22,12 @@ class HeticSlider{
     this.container.appendChild(this.containerSlider)
     this.container.classList.add("heticSlider")
 
-    
+    if(this.arrow)
+    {
+      this.leftArrow = document.createElement("a")
+      this.leftArrow.setAttribute("href","#")
+      this.leftArrow.classList.add("leftArrow")
+      this.container.appendChild(this.leftArrow)
+    }
   }
 }

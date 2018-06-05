@@ -2,10 +2,29 @@
   width:960px;
   margin:auto;
   overflow-x: hidden;
+  position:relative;
 }
 
 .heticSlider .sliderContainer{
   display: flex;
   flex-wrap: nowrap;
   transition:all linear 1s;
+}
+.heticSlider .leftArrow{
+  position:absolute;
+  width:40px;
+  height: 40px;
+  left:40px;
+  top:50%;
+  transform : translateY(-50%);
+  background: #FF9900;
+}
+.heticSlider .rightArrow{
+  position:absolute;
+  width:40px;
+  height: 40px;
+  right:40px;
+  top:50%;
+  transform : translateY(-50%);
+  background: #FF9900;
 }
