@@ -7,6 +7,7 @@ class HeticSlider{
     this.arrow = arrow
     this.pagination = pagination
     this.currentImage = 0
+    this.shift = new Array()
     this.leftArrow
     this.rightArrow
 
@@ -14,6 +15,18 @@ class HeticSlider{
   }
 
   init(){
+
+    let images = this.container.querySelectorAll("img");
+    console.log(images);
+
+    this.shift.push(0);
+    for(let i=0; i< images.length-1; i++)
+    {
+      let imageLength = images[i].offsetWidth;
+      this.shift.push(imageLength+this.shift[this.shift.length-1])
+    }
+    console.log(this.shift)
+
     this.containerSlider = document.createElement("div")
     this.containerSlider.classList.add("sliderContainer")
     this.containerSlider.innerHTML = this.container.innerHTML
@@ -21,6 +34,8 @@ class HeticSlider{
     this.container.innerHTML =''
     this.container.appendChild(this.containerSlider)
     this.container.classList.add("heticSlider")
+
+
 
     if(this.arrow)
     {
@@ -45,10 +60,21 @@ class HeticSlider{
       this.rightArrow.setAttribute("href","#")
       this.rightArrow.classList.add("rightArrow")
       this.container.appendChild(this.rightArrow)
+
+      this.rightArrow.addEventListener(
+        "click",
+        function(e)
+        {
+          e.preventDefault()
+          _this.currentImage++
+          _this.setPosition()
+        }
+      );
     }
   }
 
   setPosition(){
-    console.log("Ca marche !")
+    let position = - this.shift[this.currentImage];
+    this.containerSlider.style.transform =`translateX(${position}px)`
   }
 }
